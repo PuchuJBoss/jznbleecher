@@ -1,0 +1,18 @@
+This is jyenc, a decoder for the Usenet "yEnc" format,
+licensed under the GNU General Public License.
+
+The code is meant to be used by others to include support for yEnc encoded
+files into their own projects. Code is provided to decode files from the
+shell, but with minimum functionality. For more information on how to use it,
+known bugs and the todo list, see the ar.com.ktulu.yenc.YEncDecoder
+documentation in docs/index.html.
+
+If you want to regenerate the documentation use "ant docs", for recompiling use
+"ant" and "ant clean" to delete the class files and the documentation (you need
+Ant installed for this to work). 
+
+You can download jyenc's latest version from http://ktulu.com.ar/
+For more information on yEnc, visit http://www.yenc.org/.
+
+---
+Send suggestions and bug reports to: Luis Parravicini <luis@ktulu.com.ar>.
