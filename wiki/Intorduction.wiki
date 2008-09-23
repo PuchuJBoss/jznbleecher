@@ -1,5 +1,4 @@
-#summary One-sentence summary of this page.
-
+#summary Scope Of Work and Advancement
 = Introduction =
 
 jNzbLeecher is a File downloader who use nntp protocole de download binary files from newsgroup.
