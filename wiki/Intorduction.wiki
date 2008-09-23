@@ -22,13 +22,13 @@ jNzbLeecher has full suport of nzb files.
     * Multi newgroup servers -----------------------------------> _0%_
 
 == Optimisation ==
-    * Limit number of deconnexions/reconnexion -----------------> _25%_
+    * Limit number of deconnexions/reconnexion -----------------> _80%_
     * Reduce latency -------------------------------------------> _100%_
-    * Assure that the article is present before downloading ----> _0%_
+    * Assure that the article is present before downloading ----> _80%
  
 
 == Assemble files ==
-   * Use yenc decoder ------------------------------------------> _0%_
+   * Use yenc decoder ------------------------------------------> _50%_
    * Use par/par2  ---------------------------------------------> _0%_
    * Use unra/rar ----------------------------------------------> _0%_
    * Use zip/unzip ---------------------------------------------> _0%_
@@ -36,8 +36,8 @@ jNzbLeecher has full suport of nzb files.
    * Use file concatenation-------------------------------------> _0%_
 
 == User Interface ==
-   * Commande Line  --------------------------------------------> _0%_
-   * Graphique(Swing) UI  --------------------------------------> _0%_
+   * Commande Line  --------------------------------------------> _80%_
+   * Graphique(Swing) UI  --------------------------------------> _20%_
    * Remote(xhtml) UI  -----------------------------------------> _0%_
    * Firefox Extention UI  -------------------------------------> _0%_
 
