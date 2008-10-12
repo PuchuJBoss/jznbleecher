@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -56,9 +57,11 @@ public class NNTPResponse {
 				if ( (_line == null) || (_line.equals("."))){
 					break;
 				}
-//				else if("..".equals( _line.substring(0, 2) )){
-//					_line = _line.substring(2);
-//				}	
+				else if(_line.length() > 1 ) {
+						if ("..".equals( _line.substring(0, 2) )){
+							_line = _line.substring(1);
+						}
+				}	
 				
 				this.list.add(_line);
 			}
@@ -215,7 +218,7 @@ public class NNTPResponse {
 	    }
 		
 	    _destinationFile.close();
-	
+	    
 	    
 	    
 	}
@@ -245,14 +248,7 @@ public class NNTPResponse {
 	
 		    if (!success) throw new IllegalArgumentException("Delete: deletion failed");
 		    
-		    try {
-				PrintStream _stream = new PrintStream( _f);
-				
-				for(int i = 0; i < this.list.size(); i++) _stream.print(this.list.get(i));
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		   
 		}
 	}
 }

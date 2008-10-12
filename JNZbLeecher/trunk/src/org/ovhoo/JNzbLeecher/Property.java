@@ -13,6 +13,7 @@ public class Property {
 	public Property(RFile confFile){
 		//Server list
 		Property.serversList.add(new NNTPServer("test","news.free.fr",4));
+		
 	}
 	
 	public static ArrayList<NNTPServer> getServersList(){

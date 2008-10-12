@@ -62,6 +62,7 @@ public class NzbLeecher extends Thread{
 			this.fileDownloaderQueue.add(_fileDownloader);
 			this.fileDownloaderList.add(_fileDownloader );
 		}
+		System.out.println("NzbLeecher::init <-");
 		
 	}
 	
@@ -99,6 +100,39 @@ public class NzbLeecher extends Thread{
 			
 		}
 		
+		//exit thread
+		if ( isRunning == false ) return;
+		
+		
+		
+		while (isRunning){
+			Iterator<FileDownloader> _dwIter = fileDownloaderList.iterator();
+			short _nbDownloaded = 0;
+			short _nbFailed = 0;
+			
+			while (_dwIter.hasNext()){
+				FileDownloader _filetDownloader = _dwIter.next();
+				if (_filetDownloader.getStatus() == FileDownloader.statusEnum.FAILED) {
+					_nbFailed ++;
+				}
+				else if (_filetDownloader.getStatus() == FileDownloader.statusEnum.DOWNLOADED) {
+					_nbDownloaded ++;
+				}
+			}
+			
+			if ( _nbFailed > 0 ){
+				isRunning = false;
+				System.out.println("NzbLeecher::run <- Failed");
+			}
+			else if ( _nbDownloaded == fileDownloaderList.size() ){
+				isRunning = false;
+				System.out.println("NzbLeecher::run <- Downloaded");
+			}
+			
+			
+		}
+		System.out.println("NzbLeecher::run <-");
+		
 	}
 	
 	public void start(){
@@ -113,11 +147,15 @@ public class NzbLeecher extends Thread{
 		
 	}
 	
+	public ArrayList<FileDownloader> getFileList(){
+		return fileDownloaderList;
+	}
+	
 	public static void main(String [] args) throws IOException{
 		
 		System.out.println("Starting NzbLeecher");
-		//String _nzbPath = "/home/moi/Bureau/sample.nzb";
-		String _nzbPath = "/home/moi/test.nzb";
+		String _nzbPath = "/home/moi/Bureau/sample.nzb";
+		//String _nzbPath = "/home/moi/test.nzb";
 		
 		//test NzbLeecher
 		NzbLeecher _mynzbLeecher = new NzbLeecher(_nzbPath, "/home/moi/TestNzb", "/tmp/JNzbLeecher");

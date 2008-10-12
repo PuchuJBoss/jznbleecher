@@ -31,10 +31,63 @@ public class NNTP extends Socket {
 	private String host;	//the nntp host name
 	private NNTPResponse welcomeMsg;
 	
+	private boolean withLogin = false;
+	private String userName; //TODO use securised connection
+	private String password; //TODO use securised connection
+	
+	private boolean serverOk = false;
+	
 	private BufferedReader inputStream;
 	private PrintWriter outputStream;
 
-
+	
+	/**
+	 * The default constructor, th full constructor witch give you the possibility to chose all parameteres
+	 * @param host The nntp host name
+	 * @param port The nntp host communication port
+	 * @param login  server login
+	 * @param passwd server password
+	 * @throws IOException If an exception occure
+	 * @throws NNTPTemporaryError 
+	 * @throws NNTPPermanentError 
+	 */
+	public NNTP(String host, int port, String login, String passwd) throws IOException, NNTPTemporaryError, NNTPPermanentError{
+		super(host, port);
+		this.setHost(host);
+		this.setPort(port);
+		
+		if ((login != "") || (passwd != "")) {
+			this.withLogin = true;
+			this.userName = login;
+			this.password = passwd;
+		}
+		
+		
+		
+		this.inputStream = new BufferedReader(new InputStreamReader(super.getInputStream()));
+		this.outputStream = new PrintWriter( super.getOutputStream());
+		
+		this.welcomeMsg = new NNTPResponse(this.inputStream);
+		
+		if (this.withLogin){
+			NNTPResponse _rep = this.sendCommand("authinfo user "+this.userName);
+			
+			if (_rep.getCode()== 381){
+				if (this.password == ""){
+					throw new NNTPPermanentError("Need Password");
+				}
+				else {
+					_rep = this.sendCommand("authinfo pass "+this.password);
+					if( _rep.getCode() != 281) throw new NNTPPermanentError("Wrong Password");
+				}
+			}
+		}
+		
+		this.getwelcome();
+		
+		
+	}
+	
 	/**
 	 * The default constructor, th full constructor witch give you the possibility to chose all parameteres
 	 * @param host The nntp host name
