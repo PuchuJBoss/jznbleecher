@@ -1,0 +1,45 @@
+# Introduction #
+
+jNzbLeecher is a File downloader who use nntp protocole de download binary files from newsgroup.
+
+jNzbLeecher has full suport of nzb files.
+
+
+# Advancement #
+
+## Starting the project ##
+  * NNTPLib package ------------------------------------------> _100%_
+  * NzbParser package  ---------------------------------------> _100%_
+  * Download Thread ------------------------------------------> _100%_
+  * MultiDownloads Threads -----------------------------------> _100%_
+
+## Test and Qualification ##
+  * Simple Downloads -----------------------------------------> _100%_
+  * Download large nzb files ---------------------------------> _100%_
+  * Connexion with login informations ------------------------> _100%_
+  * Multi newgroup servers -----------------------------------> _0%_
+
+## Optimisation ##
+  * Limit number of deconnexions/reconnexion -----------------> _80%_
+  * Reduce latency -------------------------------------------> _100%_
+  * Assure that the article is present before downloading ----> _80%_
+
+
+## Assemble files ##
+  * Use yenc decoder ------------------------------------------> _50%_
+  * Use par/par2  ---------------------------------------------> _0%_
+  * Use unra/rar ----------------------------------------------> _0%_
+  * Use zip/unzip ---------------------------------------------> _0%_
+  * Use xtm ---------------------------------------------------> _0%_
+  * Use file concatenation-------------------------------------> _0%_
+
+## User Interface ##
+  * Commande Line  --------------------------------------------> _80%_
+  * Graphique(Swing) UI  --------------------------------------> _20%_
+  * Remote(xhtml) UI  -----------------------------------------> _0%_
+  * Firefox Extention UI  -------------------------------------> _0%_
+
+
+## Advanced Features ##
+  * Plugin management------------------------------------------> _0%_
+  * RSS Feads  ------------------------------------------------> _0%_
